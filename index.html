@@ -1,1 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Audible Conference Dash</title>
+    <meta name="description" content="Presenting an Office Space Interactively">
+    <!-- aframe library -->
+    <script src="https://webvr.donmccurdy.com/aframe-extras.js"></script>
+
+   <script src="https://3d.io/releases/3dio-js/1.0.x-beta/3dio.min.js"></script>
+    <!-- The example uses the animation component from Keving Ngo
+    https://github.com/ngokevin/kframe/tree/master/components/animation/ -->
+    <!-- <script src="https://unpkg.com/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
+     <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>--> 
+
+
+
+    <style>
+      nav {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        z-index: 100;
+      }
+      nav > button {
+        background: rgba(255,255,255,0.9);
+        box-sizing: border-box;
+        display: block;
+        border-radius: 3px;
+        font-size: 14px;
+        color: #333;
+        height: 30px;
+        box-shadow: 1px 1px 2px rgba(0,0,0,.1);
+        transition: all ease 0.3s;
+        cursor: pointer;
+        margin: 0 5px 5px 0;
+        padding: 0 10px;
+        text-decoration: none;
+        border: none;
+        outline: none;
+      }
+      nav > button:hover {
+        background: rgba(255,255,255,1);
+
+      }
+      #custom-logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 60px;
+        padding: 10px;
+        z-index: 1000;
+      }
+      #disclaimer {
+        position: absolute;
+        top: 95%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        z-index: 100;
+        font-family: sans-serif;
+        font-size: 14px;
+        background: #000000;
+        opacity: 0.35;
+        line-height: 0px; 
+        box-sizing: border-box;
+        display: block;
+        border-radius: 3px;
+        color: #fff;
+        height: 30px;
+        margin: 0 5px 5px 0;
+        padding: 0 10px;
+        text-decoration: none;
+        border: none;
+        outline: none;
+      }
+        
+    </style>
+
+  </head>
+    <body>  
+      <audio autoplay loop
+      src="Desert-Theme-8-bit.mp3">
+      </audio> 
+      <!-- LOGO-->
+      
+      <div id="custom-logo">
+        <div id="demno" onLoad="goTime();"></div>
+      </div>
+      <script>
+        var max=120;//this is the maximum number of seconds
+        var loop=0;//this is the starting iteration-1
+        var x = setInterval(function() {//this starts the count loop
+          loop=x+loop;//incrament variable
+          document.getElementById("demno").innerHTML = "<b> 00:" + (max-loop);//  how many seconds you have left 
+          if (loop > max) {//exceeded the max?
+            clearInterval(x);//idk what this does
+            document.getElementById("demno").innerHTML = "<b>Game Over</b>";//Out of time, buster
+            location.reload();
+          }
+        }, 1000);//the milisecond thing, 1000 ms = 1 s
+      </script>
+      
+      <!-- Disclaimer-->
+      <div id="disclaimer">
+      <p>!FIND THE RED CUBE!</p>
+      </div>
+      
+      
+     <!-- AppCreator Scene ID -->
+      <app-3dio id="tgzwxR" scene-id="ac1e641a-2275-4223-afcc-2f8071c719ca" ></app-3dio>
+    
+      <a-scene>
+              <a-sky src="https://storage.3d.io/535e624259ee6b0200000484/2017-08-08_15-19-35_C6qRcB/empire_low.jpg" rotation="0 290 0"></a-sky> 
+      <!-- Using tour component to trigger camera animation -->
+      
+      <!-- 3d.io Architecture -->
+      <a-entity io3d-data3d="key:535e624259ee6b0200000484/processing/2017-08-30_07-23-51_xHpubf/lighting.gz.data3d.buffer" position="0 0 0" shadow="cast:false; receive:true"></a-entity>
+      <!-- 3d.io Furniture -->
+      <a-entity io3d-furniture="id:b859a12c-33cd-4713-9380-85bd3b7e57d1" position="-5.251171898245806 0 15.464648294448853" rotation="0 228 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:b859a12c-33cd-4713-9380-85bd3b7e57d1" position="-7.221171898245807 0 15.424648294448852" rotation="0 108 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:b859a12c-33cd-4713-9380-85bd3b7e57d1" position="-7.121171898245807 0 14.034648294448852" rotation="0 67 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:00015a7c-b361-4efc-8380-d59934a52f0d" position="-5.944373863679935 0 14.757073527265378" rotation="0 0 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:b859a12c-33cd-4713-9380-85bd3b7e57d1" position="-5.701171898245806 0 13.514648294448852" rotation="0 312 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:8d4e0d8f-e13b-4ef1-8bf2-712b69d77cf5" position="-4.691210731863974 0 11.791172008514405" rotation="0 270 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:accac5b8-123d-4858-a6fe-7ec013c86673" position="-5.7412107318639745 0 12.101172008514405" rotation="0 0 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:accac5b8-123d-4858-a6fe-7ec013c86673" position="-6.2412107318639745 0 11.461172008514405" rotation="0 0 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:f93818ee-69db-4d04-a891-92c8e455ed84" position="-6.231210731863974 0 11.721172008514404" rotation="0 270 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:8d4e0d8f-e13b-4ef1-8bf2-712b69d77cf5" position="-7.191210731863974 0 11.791172008514406" rotation="0 90 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:b859a12c-33cd-4713-9380-85bd3b7e57d1" position="5.8789063 0 2.2675781" rotation="0 48 0" shadow="cast:true; receive:false" static-body="shape:sphere;" ></a-entity>
+      <a-entity io3d-furniture="id:b859a12c-33cd-4713-9380-85bd3b7e57d1" position="6.1728516 0 4.1152344" rotation="0 132 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:b859a12c-33cd-4713-9380-85bd3b7e57d1" position="7.5166016 0 4.0732422" rotation="0 247 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:00015a7c-b361-4efc-8380-d59934a52f0d" position="6.5927734 0 3.0234375" rotation="0 180 0" shadow="cast:true; receive:false" static-body="shape:sphere;"></a-entity>
+      <a-entity io3d-furniture="id:b859a12c-33cd-4713-9380-85bd3b7e57d1" position="7.6425781 0 2.2675781" rotation="0 288 0" shadow="cast:true; receive:false" static-body="shape:box;"></a-entity>
+      <a-entity io3d-furniture="id:8d4e0d8f-e13b-4ef1-8bf2-712b69d77cf5" position="7.7810545116663 0 6.7195701789855935" rotation="0 270 0" shadow="cast:true; receive:false" static-body="shape:box;"></a-entity>
+      <a-entity io3d-furniture="id:f93818ee-69db-4d04-a891-92c8e455ed84" position="6.8210545116663 0 6.789570178985592" rotation="0 90 0" shadow="cast:true; receive:false" static-body="shape:box;"></a-entity>
+      <a-entity io3d-furniture="id:accac5b8-123d-4858-a6fe-7ec013c86673" position="6.8310545116662995 0 7.049570178985593" rotation="0 180 0" shadow="cast:true; receive:false" static-body="shape:box;"></a-entity>
+      <a-entity io3d-furniture="id:accac5b8-123d-4858-a6fe-7ec013c86673" position="6.3310545116663 0 6.409570178985592" rotation="0 180 0" shadow="cast:true; receive:false" static-body="shape:box;"></a-entity>
+      <a-entity io3d-furniture="id:8d4e0d8f-e13b-4ef1-8bf2-712b69d77cf5" position="5.2810545116663 0 6.719570178985593" rotation="0 90 0" shadow="cast:true; receive:false" static-body="shape:box;"></a-entity>
+      <a-entity class="io3d-group" position="0.2099609 0 15.3691406" rotation="0 117 0">
+        <a-entity io3d-furniture="id:c3c5ca7a-95bb-429b-8b43-2ae0e448b82a" position="-1.5258789098915315e-7 0 -4.291534483336079e-8" rotation="0 0 0" shadow="cast:true; receive:false" static-body="shape:box;"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="2.37999984741211 0 -4.291534483336079e-8" rotation="0 90 0" shadow="cast:true; receive:false" static-body="shape:box;"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="-0.0600001525878906 0 -0.010000042915344842" rotation="0 90 0" shadow="cast:true; receive:false" static-body="shape:box;"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="-2.280000152587891 0 -0.010000042915345064" rotation="0 270 0" shadow="cast:true; receive:false" static-body="shape:box;"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="-2.2200001525878905 0 1.309999957084655" rotation="0 163 0" shadow="cast:true; receive:false" static-body="shape:box;"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-0.9400001525878904 0 1.319999957084655" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="0.5599998474121093 0 1.2799999570846552" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="1.7399998474121094 0 1.269999957084655" rotation="0 192 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:40ee541e-395f-4f69-9a2d-1a09b18be5a0" position="3.0399998474121093 0 0.22999995708465493" rotation="0 287 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="1.9499998474121094 0 -1.0700000429153453" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="0.6299998474121096 0 -1.1200000429153452" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-0.6700001525878911 0 -1.2500000429153446" rotation="0 14 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-2.000000152587891 0 -1.270000042915345" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:40ee541e-395f-4f69-9a2d-1a09b18be5a0" position="-3.2700001525878903 0 -0.35000004291534514" rotation="0 63 0" shadow="cast:true; receive:false"></a-entity>
+      </a-entity>
+      <a-entity class="io3d-group" position="1.3857422 0 6.1728516" rotation="0 229 0">
+        <a-entity io3d-furniture="id:c3c5ca7a-95bb-429b-8b43-2ae0e448b82a" position="-1.5258789098915315e-7 0 -4.291534483336079e-8" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="2.37999984741211 0 -4.291534483336079e-8" rotation="0 90 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="-0.0600001525878906 0 -0.010000042915344842" rotation="0 90 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="-2.280000152587891 0 -0.010000042915345064" rotation="0 270 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="-2.2200001525878905 0 1.309999957084655" rotation="0 163 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-0.9400001525878904 0 1.319999957084655" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="0.5599998474121093 0 1.2799999570846552" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="1.7399998474121094 0 1.269999957084655" rotation="0 192 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:40ee541e-395f-4f69-9a2d-1a09b18be5a0" position="3.0399998474121093 0 0.22999995708465493" rotation="0 287 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="1.9499998474121094 0 -1.0700000429153453" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="0.6299998474121096 0 -1.1200000429153452" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-0.6700001525878911 0 -1.2500000429153446" rotation="0 14 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-2.000000152587891 0 -1.270000042915345" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:40ee541e-395f-4f69-9a2d-1a09b18be5a0" position="-3.2700001525878903 0 -0.35000004291534514" rotation="0 63 0" shadow="cast:true; receive:false"></a-entity>
+      </a-entity>
+      <a-entity class="io3d-group" position="4.5771484 0 11.0019531" rotation="0 180 0">
+        <a-entity io3d-furniture="id:c3c5ca7a-95bb-429b-8b43-2ae0e448b82a" position="-1.5258789098915315e-7 0 -4.291534483336079e-8" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="2.37999984741211 0 -4.291534483336079e-8" rotation="0 90 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="-0.0600001525878906 0 -0.010000042915344842" rotation="0 90 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="-2.280000152587891 0 -0.010000042915345064" rotation="0 270 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="-2.2200001525878905 0 1.309999957084655" rotation="0 163 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-0.9400001525878904 0 1.319999957084655" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="0.5599998474121093 0 1.2799999570846552" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="1.7399998474121094 0 1.269999957084655" rotation="0 192 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:40ee541e-395f-4f69-9a2d-1a09b18be5a0" position="3.0399998474121093 0 0.22999995708465493" rotation="0 287 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="1.9499998474121094 0 -1.0700000429153453" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="0.6299998474121096 0 -1.1200000429153452" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-0.6700001525878911 0 -1.2500000429153446" rotation="0 14 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-2.000000152587891 0 -1.270000042915345" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:40ee541e-395f-4f69-9a2d-1a09b18be5a0" position="-3.2700001525878903 0 -0.35000004291534514" rotation="0 63 0" shadow="cast:true; receive:false"></a-entity>
+      </a-entity>
+      <a-entity class="io3d-group" position="5.6269531 0 -6.2988281" rotation="0 0 0">
+        <a-entity io3d-furniture="id:7c3c1c31-6a59-43fc-adae-a8bb88772130" position="-6.484985348720329e-7 0 -8.583072608203679e-8" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:7c3c1c31-6a59-43fc-adae-a8bb88772130" position="1.6099993515014646 0 -3.242492963018151e-7" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:7c3c1c31-6a59-43fc-adae-a8bb88772130" position="1.6099993515014646 0 0.8099996757507038" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:65ff899e-f684-43c4-be79-ed11103adcc0" position="1.770000610351559 0.7131999731063834 0.12999999999999234" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:c79b0c53-0132-434e-a8a3-753bcdbb09d0" position="1.1100010299682594 8.881784197001252e-16 0.8300001144409173" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:c79b0c53-0132-434e-a8a3-753bcdbb09d0" position="-0.509998970031738 8.881784197001252e-16 0.8100001144409172" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:c79b0c53-0132-434e-a8a3-753bcdbb09d0" position="1.0900010299682634 8.881784197001252e-16 0.010000114440904984" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:c79b0c53-0132-434e-a8a3-753bcdbb09d0" position="-0.5 8.881784197001252e-16 -0.01" rotation="0 180 0"></a-entity>
+        <a-entity io3d-furniture="id:48a759bc-8149-46dd-a87b-5de261679f4a" position="1.6299981307983415 3.552713678800501e-15 -0.670000114440936" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:48a759bc-8149-46dd-a87b-5de261679f4a" position="0.009998130798337002 3.552713678800501e-15 -0.670000114440936" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:48a759bc-8149-46dd-a87b-5de261679f4a" position="0.03999813079833814 3.552713678800501e-15 1.4999998855590713" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:48a759bc-8149-46dd-a87b-5de261679f4a" position="1.6099981307983384 3.552713678800501e-15 1.4999998855590633" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+      </a-entity>
+      <a-entity class="io3d-group" position="7.1386719 0 -1.7216797" rotation="0 0 0">
+        <a-entity io3d-furniture="id:2f277d99-dca7-4a3f-abfd-bae61e323929" position="7.698779214138085e-8 0 -9.238652154408555e-8" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:04635682-3a56-4721-bc7e-b1c9b23b85bf" position="0.5209725475311275 0 -0.8094935226440434" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:04635682-3a56-4721-bc7e-b1c9b23b85bf" position="-0.37902745246887193 0 -0.8494935226440425" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:04635682-3a56-4721-bc7e-b1c9b23b85bf" position="-1.4690274524688722 0 0.09050647735595696" rotation="0 90 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:04635682-3a56-4721-bc7e-b1c9b23b85bf" position="-0.459027452468872 0 0.9105064773559572" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:04635682-3a56-4721-bc7e-b1c9b23b85bf" position="0.46097254753112793 0 0.8105064773559576" rotation="0 159 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:52cf6bf2-3725-478b-a99b-33f742bd91d3" position="0.13097254753112786 0 2.4405064773559566" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+      </a-entity>
+      <a-entity class="io3d-group" position="-6.0888672 0 -14.4453125" rotation="0 0 0">
+        <a-entity io3d-furniture="id:14afb697-824b-4c3e-8d02-d19814280482" position="-4.7185393015070076e-7 0 -1.9617259816584465e-8" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:35017758-0147-4a1c-93a0-5d67b954806b" position="1.601318855285644 0 0.04469764709472557" rotation="0 270 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:35017758-0147-4a1c-93a0-5d67b954806b" position="0.7413188552856447 0 -0.9353023529052744" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:35017758-0147-4a1c-93a0-5d67b954806b" position="-0.04868114471435625 0 -0.9253023529052737" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:35017758-0147-4a1c-93a0-5d67b954806b" position="-0.8286811447143556 0 -0.9253023529052737" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:35017758-0147-4a1c-93a0-5d67b954806b" position="-1.47 0 0.08" rotation="0 90 0"></a-entity>
+        <a-entity io3d-furniture="id:35017758-0147-4a1c-93a0-5d67b954806b" position="-0.7886811447143547 0 0.9146976470947259" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:35017758-0147-4a1c-93a0-5d67b954806b" position="-0.018681144714355113 0 0.9346976470947257" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:35017758-0147-4a1c-93a0-5d67b954806b" position="0.8213188552856447 0 0.9246976470947259" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:52cf6bf2-3725-478b-a99b-33f742bd91d3" position="-0.5986811447143561 0 -2.2053023529052744" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+      </a-entity>
+      <a-entity class="io3d-group" position="-6.3408203 0 -1.5957031" rotation="0 270 0">
+        <a-entity io3d-furniture="id:c3c5ca7a-95bb-429b-8b43-2ae0e448b82a" position="-1.5258789098915315e-7 0 -4.291534483336079e-8" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="2.37999984741211 0 -4.291534483336079e-8" rotation="0 90 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="-0.0600001525878906 0 -0.010000042915344842" rotation="0 90 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:b7fa1695-06f8-4fc5-b6d0-3f986137b9a2" position="-2.280000152587891 0 -0.010000042915345064" rotation="0 270 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="-2.2200001525878905 0 1.309999957084655" rotation="0 163 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-0.9400001525878904 0 1.319999957084655" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="0.5599998474121093 0 1.2799999570846552" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="1.7399998474121094 0 1.269999957084655" rotation="0 192 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:40ee541e-395f-4f69-9a2d-1a09b18be5a0" position="3.0399998474121093 0 0.22999995708465493" rotation="0 287 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="1.9499998474121094 0 -1.0700000429153453" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:f578e7ff-575e-4752-b06c-64b7830d69d4" position="0.6299998474121096 0 -1.1200000429153452" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-0.6700001525878911 0 -1.2500000429153446" rotation="0 14 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:74d2dda5-caf3-4b0b-8c0e-fe3f87b3d97e" position="-2.000000152587891 0 -1.270000042915345" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:40ee541e-395f-4f69-9a2d-1a09b18be5a0" position="-3.2700001525878903 0 -0.35000004291534514" rotation="0 63 0" shadow="cast:true; receive:false"></a-entity>
+      </a-entity>
+      <a-entity class="io3d-group" position="6.71875 0 -18.2421875" rotation="0 270 0">
+        <a-entity io3d-furniture="id:bf209a61-c34a-4f72-9bf5-2610a99e6572" position="-2.8610229296788248e-8 0 -1.9073487234066988e-8" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:40ee541e-395f-4f69-9a2d-1a09b18be5a0" position="0.8799999713897706 0 -0.6700000190734872" rotation="0 338 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:91a18c8a-f414-4aed-8a8f-b1c71549e214" position="1.2799999713897705 0 -0.16000001907348738" rotation="0 293 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:91a18c8a-f414-4aed-8a8f-b1c71549e214" position="0.9499999713897704 0 0.559999980926513" rotation="0 220 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:91a18c8a-f414-4aed-8a8f-b1c71549e214" position="0.049999971389770526 0 0.6399999809265129" rotation="0 166 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:40ee541e-395f-4f69-9a2d-1a09b18be5a0" position="-0.8600000286102294 0 0.6199999809265131" rotation="0 162 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:91a18c8a-f414-4aed-8a8f-b1c71549e214" position="-1.4800000286102295 0 -0.05000001907348661" rotation="0 72 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:91a18c8a-f414-4aed-8a8f-b1c71549e214" position="-0.8500000286102298 0 -0.7700000190734873" rotation="0 18 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:d25f65e2-8733-4928-94fb-b276508f4299" position="0.039999971389770295 0 -0.760000019073487" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:237516fc-df7a-470c-b7c2-262b652dfc7d" position="0.06999997138977054 0 -0.010000019073487021" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:237516fc-df7a-470c-b7c2-262b652dfc7d" position="0.7699999713897707 0 -0.020000019073487252" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:237516fc-df7a-470c-b7c2-262b652dfc7d" position="-0.6300000286102296 0 -0.010000019073487021" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+      </a-entity>
+      <a-entity class="io3d-group" position="3.1445313 0 -19.140625" rotation="0 145 0">
+        <a-entity io3d-furniture="id:7c3c1c31-6a59-43fc-adae-a8bb88772130" position="-2.316656073642065e-7 0 -4.495981920094039e-8" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:48a759bc-8149-46dd-a87b-5de261679f4a" position="-0.29291489052329356 0 0.8721832934684883" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:c79b0c53-0132-434e-a8a3-753bcdbb09d0" position="0.4939010047912602 0 0.011324062347411123" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+      </a-entity>
+      <a-entity class="io3d-group" position="-3.1445312 0 -19.2382812" rotation="0 229 0">
+        <a-entity io3d-furniture="id:7c3c1c31-6a59-43fc-adae-a8bb88772130" position="-2.316656073642065e-7 0 -4.495981920094039e-8" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:48a759bc-8149-46dd-a87b-5de261679f4a" position="-0.29291489052329356 0 0.8721832934684883" rotation="0 180 0" shadow="cast:true; receive:false"></a-entity>
+        <a-entity io3d-furniture="id:c79b0c53-0132-434e-a8a3-753bcdbb09d0" position="0.4939010047912602 0 0.011324062347411123" rotation="0 0 0" shadow="cast:true; receive:false"></a-entity>
+      </a-entity>
+      
+      <!-- Sky -->
+    
+      
+      <!-- Ambient Light -->
+      <a-entity light="type: ambient; color: #fff; intensity:1"></a-entity>
+
+      <!-- Directional Light; all furniture has been set to casting light while the architecture has been set to receiving; this ensures that the two come closer together -->
+      <a-entity id="player"
+                camera="userHeight: 4"
+                universal-controls
+                kinematic-body
+                position="0 1 0"
+                jump-ability="maxJumps: 1;
+                              distance: 2;">
+        <a-cursor fuse="true" material="" raycaster="" cursor="" geometry="" position="" rotation="" scale="" visible=""></a-cursor>  
+</a-entity> 
+      </a-entity>
+      <a-grid position="0 -0.2 0" static-body="sphereRadius:NaN" material="visible:false"></a-grid>
+
+
+
+
+      <a-box color="F7991C" position="30 0.2 20" static-body></a-box>
+      <a-entity  light="type: directional;
+                      castShadow: true;
+                      intensity: 0.4;
+                      shadowCameraVisible: false;
+                      shadowCameraTop:10;
+                      shadowCameraRight:20;
+                      shadowCameraBottom:-10;
+                      shadowCameraLeft:-20;
+                      shadowMapHeight:1024;
+                      shadowMapWidth:1024;
+                      color:#bbb;"
+                position= "10 10 -10"
+                rotation="0 40 0">
+      </a-entity>
+      
+      <a-entity position="-0.303 0.367 -0.137" rotation="0 0 0" text="align:center;side:double;value:Get to the Conference Room  \nBefore Time Runs Out! \n ;width:5.11" mixin="null" scale="" visible="">
+                <a-entity geometry="primitive: plane; height: 1.34; width: 3.30" material="color: red; opacity: .7" position="" rotation="" scale="" visible=""></a-entity>
+    </a-scene>
+  </body>
+</html>
 
